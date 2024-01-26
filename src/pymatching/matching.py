@@ -18,6 +18,7 @@ import warnings
 import numpy as np
 import networkx as nx
 import retworkx as rx
+import rustworkx as rux
 import pymatching
 from scipy.sparse import csc_matrix, spmatrix
 import matplotlib.cbook
@@ -138,7 +139,7 @@ class Matching:
             del kwargs["H"]
         if isinstance(graph, nx.Graph):
             self.load_from_networkx(graph)
-        elif isinstance(graph, rx.PyGraph):
+        elif isinstance(graph, rx.PyGraph) or isinstance(graph, rux.PyGraph):
             self.load_from_retworkx(graph)
         elif type(graph).__name__ == "DetectorErrorModel":
             self._load_from_detector_error_model(graph)
